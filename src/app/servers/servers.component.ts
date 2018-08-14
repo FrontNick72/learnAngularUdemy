@@ -10,12 +10,14 @@ export class ServersComponent implements OnInit {
   serverCreationstatus: string = 'No server was created!';
   serverName: string = 'Test server';
   serverCreated: boolean = false;
-  servers = ['Testserver', 'Testserver 2'];
+  newServerContent: string;
+  servers = [];
 
   constructor() {
     setTimeout(() => {
       this.allowNewServer = true;
     }, 2000);
+    this.newServerContent = '';
   }
 
   ngOnInit() {
@@ -23,7 +25,21 @@ export class ServersComponent implements OnInit {
 
   onCreateServer() {
     this.serverCreated = true;
-    this.servers.push(this.serverName);
+    this.servers.push({
+      type: 'server',
+      name: this.serverName,
+      content: this.newServerContent
+    });
+    this.serverCreationstatus = `Server was created! Name is ${this.serverName}`;
+  }
+
+  onAddBlueprint() {
+    this.serverCreated = true;
+    this.servers.push({
+      type: 'blueprint',
+      name: this.serverName,
+      content: this.newServerContent
+    });
     this.serverCreationstatus = `Server was created! Name is ${this.serverName}`;
   }
 
