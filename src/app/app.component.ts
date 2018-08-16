@@ -12,4 +12,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   name = 'Nikita';
+  page: string;
+
+  constructor() {
+    this.page = 'Recipes';
+  }
+
+  onChangedPage(page) {
+    this.page = page;
+  }
 }
