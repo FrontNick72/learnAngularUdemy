@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Recipes } from '../recipes.module';
 
 @Component({
@@ -14,8 +14,11 @@ export class RecipeBookComponent {
       'http://potchefstroomherald.co.za/wp-content/uploads/sites/117/2015/05/recipe-575434_640_6049519_8594059_6672824.png'),
   ];
 
-  constructor() {
-    console.log(this.recipes);
+  @Output() detailInformation = new EventEmitter<Recipes>();
 
+  constructor() {}
+
+  onShowDetail(recipeEl: Recipes) {
+    this.detailInformation.emit(recipeEl);
   }
 }

@@ -8,11 +8,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class HeaderComponent {
   @Output() page = new EventEmitter<string>();
 
-  onChangePage(event) {
-    console.log('event', event.target.getAttribute('href'));
-    event.preventDefault();
-    const pageName = event.target.getAttribute('href');
-
+  onChangePage(pageName: string) {
     this.page.emit(pageName);
   }
 }

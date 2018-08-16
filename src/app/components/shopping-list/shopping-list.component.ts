@@ -10,4 +10,23 @@ export class ShoppingListComponent {
     new Ingredient('Apples', 4),
     new Ingredient('Coconut', 1)
   ];
+
+  newIngredient: string;
+  newAmountIngredient: string;
+  chooseIngredient: Ingredient;
+
+  constructor() {}
+
+  onAddNewIngredient(newIngredient) {
+    this.ingredients.push(new Ingredient(newIngredient.name, newIngredient.amount));
+  }
+
+  onChooseIngredient(event) {
+    event.preventDefault();
+
+    this.chooseIngredient = {
+      name: event.target.getAttribute('data-name'),
+      amount: event.target.getAttribute('data-amount')
+    };
+  }
 }
