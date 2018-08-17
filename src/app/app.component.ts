@@ -4,12 +4,8 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
-  // styles: [`
-  //   h3 {
-  //     color: darkblue;
-  //   }
-  // `]
 })
 export class AppComponent {
-  name = 'Nikita';
+  numbers = [1, 2, 3, 4, 5];
+  onlyOdd = false;
 }
