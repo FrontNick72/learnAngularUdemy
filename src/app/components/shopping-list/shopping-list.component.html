@@ -5,15 +5,17 @@
       [ingredientsArray]="ingredients"
       [valuesIngredient]="chooseIngredient"></app-shopping-edit>
     <hr>
-    <ul class="list-group">
+    <ul class="list-group" *ngIf="ingredients.length !== 0; else textInfo">
       <a
         *ngFor="let ingredient of ingredients"
         href="#"
         class="list-group-item"
-        style="cursor: pointer;"
-        (click)="onChooseIngredient($event)">
+        style="cursor: pointer;">
         {{ ingredient.name }} ({{ ingredient.amount }})
       </a>
     </ul>
+    <ng-template #textInfo>
+      Add ingredient please!
+    </ng-template>
   </div>
 </div>

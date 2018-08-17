@@ -20,13 +20,4 @@ export class ShoppingListComponent {
   onAddNewIngredient(newIngredient) {
     this.ingredients.push(new Ingredient(newIngredient.name, newIngredient.amount));
   }
-
-  onChooseIngredient(event) {
-    event.preventDefault();
-
-    this.chooseIngredient = {
-      name: event.target.getAttribute('data-name'),
-      amount: event.target.getAttribute('data-amount')
-    };
-  }
 }

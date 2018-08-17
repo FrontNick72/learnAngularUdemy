@@ -41,4 +41,10 @@ export class ShoppingEditComponent implements OnInit, OnChanges {
       element.name === nameInput ? this.ingredientsArray.splice(index, 1) : '';
     });
   }
+
+  onClearList() {
+    console.log('clear', this.ingredientsArray);
+
+    this.ingredientsArray.splice(0, this.ingredientsArray.length);
+  }
 }
