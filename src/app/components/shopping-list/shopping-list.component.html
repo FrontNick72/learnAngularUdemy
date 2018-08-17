@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-10">
     <app-shopping-edit
-      (newIngredient)="onAddNewIngredient($event)"
+      (ingredientAdded)="onAddNewIngredient($event)"
       [ingredientsArray]="ingredients"
       [valuesIngredient]="chooseIngredient"></app-shopping-edit>
     <hr>

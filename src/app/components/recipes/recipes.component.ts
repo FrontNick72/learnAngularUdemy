@@ -15,6 +15,5 @@ export class RecipesComponent implements OnInit {
 
   onGetDetail(recipeDetail) {
     this.recipeDetailEl = recipeDetail;
-    console.log('dasfasf', this.recipeDetailEl);
   }
 }

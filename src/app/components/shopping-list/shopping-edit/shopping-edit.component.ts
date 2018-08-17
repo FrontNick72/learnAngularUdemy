@@ -12,7 +12,7 @@ export class ShoppingEditComponent implements OnInit, OnChanges {
   @ViewChild('amountInput') amountInput: ElementRef;
   @Input() ingredientsArray: Ingredient[];
   @Input() valuesIngredient: Ingredient;
-  @Output() newIngredient = new EventEmitter<Ingredient>();
+  @Output() ingredientAdded = new EventEmitter<Ingredient>();
 
   constructor() { }
 
@@ -27,10 +27,11 @@ export class ShoppingEditComponent implements OnInit, OnChanges {
   }
 
   onAddItem() {
-    this.newIngredient.emit({
-      name: this.nameInput.nativeElement.value,
-      amount: this.amountInput.nativeElement.value
-    });
+    const ingName = this.nameInput.nativeElement.value;
+    const ingAmount = this.amountInput.nativeElement.value;
+    const newIngredient = new Ingredient(ingName, ingAmount);
+
+    this.ingredientAdded.emit(newIngredient);
   }
 
   onDeleteItem() {
