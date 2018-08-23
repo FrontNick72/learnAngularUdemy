@@ -1,19 +1,45 @@
 
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 
 import { Recipes } from './recipes.module';
+import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
+@Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipes>();
 
   private recipes: Recipes[] = [
-    new Recipes('A test Recipe', 'This is Simply a test',
-      'http://potchefstroomherald.co.za/wp-content/uploads/sites/117/2015/05/recipe-575434_640_6049519_8594059_6672824.png'),
-    new Recipes('A test Recipe 2', 'This is Difficult a test',
-      'http://potchefstroomherald.co.za/wp-content/uploads/sites/117/2015/05/recipe-575434_640_6049519_8594059_6672824.png'),
+    new Recipes(
+      'Shaurma',
+      'Fast and Delicious',
+      'http://kamelena.ru/recipes/image/500/505/f505-shaurma.jpg',
+      [
+        new Ingredient('Meat', 2),
+        new Ingredient('cucumber', 1),
+        new Ingredient('tomato', 1),
+        new Ingredient('pita', 1)
+      ]
+    ),
+    new Recipes(
+      'Soupe',
+      'Dish for lunch',
+      'http://kamelena.ru/recipes/image/500/533/f533-borsh.jpg',
+      [
+        new Ingredient('Meat', 3),
+        new Ingredient('Carrot', 1),
+        new Ingredient('Noodles', 1)
+      ]
+    ),
   ];
+
+  constructor(private slService: ShoppingListService) {}
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+    this.slService.addIngredients(ingredients);
   }
 }

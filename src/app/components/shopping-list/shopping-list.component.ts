@@ -6,8 +6,7 @@ import { ShoppingListService } from './shopping-list.service';
 @Component({
   selector: 'app-shop-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.html'],
-  providers: [ShoppingListService]
+  styleUrls: ['./shopping-list.component.html']
 })
 export class ShoppingListComponent implements OnInit {
   ingredients: Ingredient[];
