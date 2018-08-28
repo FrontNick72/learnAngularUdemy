@@ -1,11 +1,8 @@
-<app-header (page)="onChangedPage($event)"></app-header>
+<app-header></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-recipes *ngIf="page === 'Recipes'"></app-recipes>
-      <hr>
-      <hr>
-      <app-shop-list *ngIf="page === 'Shopping'"></app-shop-list>
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

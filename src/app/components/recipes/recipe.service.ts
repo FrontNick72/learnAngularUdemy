@@ -11,6 +11,7 @@ export class RecipeService {
 
   private recipes: Recipes[] = [
     new Recipes(
+      1,
       'Shaurma',
       'Fast and Delicious',
       'http://kamelena.ru/recipes/image/500/505/f505-shaurma.jpg',
@@ -22,6 +23,7 @@ export class RecipeService {
       ]
     ),
     new Recipes(
+      2,
       'Soupe',
       'Dish for lunch',
       'http://kamelena.ru/recipes/image/500/533/f533-borsh.jpg',
@@ -37,6 +39,15 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getRecipe(id: number) {
+    const recipe = this.recipes.find(
+      (r) => {
+        return r.id === id;
+      }
+    );
+    return recipe;
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
