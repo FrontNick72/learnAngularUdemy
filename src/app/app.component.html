@@ -4,21 +4,31 @@
       <form
         [formGroup]="signupForms"
         (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            formControlName="username"
-            class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="email">email</label>
-          <input
-            type="text"
-            id="email"
-            formControlName="email"
-            class="form-control">
+        <div
+          formGroupName="userData"
+          class="form-group">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              formControlName="username"
+              class="form-control">
+            <span
+              *ngIf="!signupForms.get('userData.username').valid && signupForms.get('userData.username').touched"
+              class="help-block">Please enter a valid username!</span>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="text"
+              id="email"
+              formControlName="email"
+              class="form-control">
+            <span
+              *ngIf="!signupForms.get('userData.email').valid && signupForms.get('userData.email').touched"
+              class="help-block">Please enter a valid email!</span>
+          </div>
         </div>
         <div class="radio" *ngFor="let gender of genders">
           <label>
@@ -28,6 +38,9 @@
               [value]="gender">{{ gender }}
           </label>
         </div>
+        <span
+            *ngIf="!signupForms.valid && signupForms.touched"
+            class="help-block">Please enter a valid data!</span>
         <button class="btn btn-primary" type="submit">Submit</button>
       </form>
     </div>
