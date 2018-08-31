@@ -1,56 +1,24 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  @ViewChild('f') submitForm : NgForm;
-  defaultQuestion = 'pet';
-  answer = '';
+export class AppComponent implements OnInit {
   genders = ['male', 'female'];
-  user = {
-    username: '',
-    email: '',
-    secretQuestion: '',
-    answer: '',
-    gender: ''
-  };
-  submitted = false;
+  signupForms: FormGroup;
 
-  suggestUserName() {
-    const suggestedName = 'Superuser';
-    this.submitForm.setValue({
-      userData: {
-        username: suggestedName,
-        email: '',
-      },
-      secret: 'pet',
-      questionAnswer: '',
-      gender: 'male',
+  ngOnInit(): void {
+    this.signupForms = new FormGroup({
+      'username': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'gender': new FormControl('male')
     });
-    // this.submitForm.form.patchValue({
-    //   userData: {
-    //     username: suggestedName,
-    //   }
-    // });
   }
 
-  //one aproach
-  // onSubmit(form: NgForm) {
-  // }
-
-  //two aproach
   onSubmit() {
-    this.submitted = true;
-    this.user.username = this.submitForm.value.userData.username;
-    this.user.email = this.submitForm.value.userData.email;
-    this.user.secretQuestion = this.submitForm.value.secret;
-    this.user.answer = this.submitForm.value.questionAnswer;
-    this.user.gender = this.submitForm.value.gender;
-
-    this.submitForm.reset();
+    console.log(this.signupForms);
   }
 }
