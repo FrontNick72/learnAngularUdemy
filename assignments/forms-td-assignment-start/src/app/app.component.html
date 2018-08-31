@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!-- Add a Form with the following Inputs (and Validators)
+           1) Mail address (should not be empty and should be an email address)
+           2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
+              Set "Advanced" as Default
+           3) A Password field (should not be empty)
+           4) A Submit Button
+
+           Display a warning message if the Form is invalid AND was touched. Display a warning message below each input if it's invalid.
+
+           Upon submitting the form, you should simply print the Value of the Form to the Console.
+           Optionally, display it in your template.
+      -->
+      <form
+        (ngSubmit)="onSubmit()"
+        class="form"
+        #f="ngForm">
+        <input
+          class="form-control"
+          type="email"
+          id="email"
+          ngModel
+          name="email"
+          required
+          email
+          #email="ngModel"
+          >
+        <p
+          *ngIf="!email.valid && email.touched"
+          class="text-danger help-block">Please input valid email</p>
+        <select
+          id="level"
+          class="form-control"
+          [ngModel]="defaultLevel"
+          name="level">
+          <option value="basic">Basic</option>
+          <option value="advanced">Advanced</option>
+          <option value="pro">Pro</option>
+        </select>
+        <input
+          class="form-control"
+          type="password"
+          name="password"
+          required
+          ngModel
+          #pass="ngModel">
+        <p
+          *ngIf="!pass.valid && pass.touched"
+          class="text-danger help-block">Please input password!</p>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!f.valid">Submit</button>
+      </form>
+      <p
+        *ngIf="!f.valid && f.touched"
+        class="text-danger help-block">Form is not valid</p>
+    </div>
+  </div>
+</div>
+<hr>
+<div
+  *ngIf="submitted"
+  class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <div>Your email is {{ user.email }}</div>
+      <div>Your level is {{ user.level }}</div>
+      <div>Your password is {{ user.password }}</div>
+    </div>
+  </div>
+</div>
