@@ -4,53 +4,51 @@ import { Injectable } from '@angular/core';
 import { Recipes } from './recipes.module';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class RecipeService {
-
+  recipesChanged = new Subject<Recipes[]>();
 
   private recipes: Recipes[] = [
     new Recipes(
-      1,
-      'Shaurma',
-      'Fast and Delicious',
-      'http://kamelena.ru/recipes/image/500/505/f505-shaurma.jpg',
+      'Tasty Schnitzel',
+      'A super-tasty Schnitzel - just awesome!',
+      'https://upload.wikimedia.org/wikipedia/commons/7/72/Schnitzel.JPG',
       [
-        new Ingredient('Meat', 2),
-        new Ingredient('cucumber', 1),
-        new Ingredient('tomato', 1),
-        new Ingredient('pita', 1)
-      ]
-    ),
-    new Recipes(
-      2,
-      'Soupe',
-      'Dish for lunch',
-      'http://kamelena.ru/recipes/image/500/533/f533-borsh.jpg',
+        new Ingredient('Meat', 1),
+        new Ingredient('French Fries', 20)
+      ]),
+    new Recipes('Big Fat Burger',
+      'What else you need to say?',
+      'https://upload.wikimedia.org/wikipedia/commons/b/be/Burger_King_Angus_Bacon_%26_Cheese_Steak_Burger.jpg',
       [
-        new Ingredient('Meat', 3),
-        new Ingredient('Carrot', 1),
-        new Ingredient('Noodles', 1)
-      ]
-    ),
+        new Ingredient('Buns', 2),
+        new Ingredient('Meat', 1)
+      ])
   ];
 
-  constructor(private slService: ShoppingListService) {}
+  constructor(private slService: ShoppingListService) { }
 
   getRecipes() {
     return this.recipes.slice();
   }
 
-  getRecipe(id: number) {
-    const recipe = this.recipes.find(
-      (r) => {
-        return r.id === id;
-      }
-    );
-    return recipe;
+  getRecipe(index: number) {
+    return this.recipes[index];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.slService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipes) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, newRecipe: Recipes) {
+    this.recipes[index] = newRecipe;
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
