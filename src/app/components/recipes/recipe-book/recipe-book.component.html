@@ -6,10 +6,13 @@
 <hr>
 <div class="row">
   <div class="col-xs-12">
-    <app-recipe-item
-      *ngFor="let recipeEl of recipes; let i = index"
-      [recipe]="recipeEl"
-      [index]="i"></app-recipe-item>
+    <div *ngIf="recipes.length !== 0; else empty">
+      <app-recipe-item
+        *ngFor="let recipeEl of recipes; let i = index"
+        [recipe]="recipeEl"
+        [index]="i"></app-recipe-item>
+    </div>
+    <ng-template #empty>Add a new Recipe!</ng-template>
   </div>
 </div>
 
