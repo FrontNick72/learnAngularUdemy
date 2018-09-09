@@ -1,0 +1,73 @@
+.row
+  .col-xs-12
+    form('[formGroup]'="recipeForm" '(ngSubmit)'="onSubmit()")
+      .row
+        .col-xs-12
+          button.btn.btn-success(
+            type="submit"
+            '[disabled]'="!recipeForm.valid"
+          ) Save
+          button.btn.btn-danger(type="button" '(click)'="onCancel()") Cancel
+      .row
+        .col-xs-12
+          .form-group
+            label(for="name") Name
+            input.form-control(
+              type="text"
+              id="name"
+              'formControlName'="name"
+            )
+      .row
+        .col-xs-12
+          .form-group
+            label(for="imagePath") Image URL
+            input.form-control(
+              type="text"
+              id="imagePath"
+              'formControlName'="imagePath"
+              '#imagePath'
+            )
+
+      .row
+        .col-xs-12
+          img.img-responsive('[src]'="imagePath.value")
+      .row
+        .col-xs-12
+          .form-group
+            label(for="description") Description
+            textarea.form-control(
+              type="text"
+              id="description"
+              'formControlName'="description"
+              rows="6"
+            )
+      .row
+        .col-xs-12('formArrayName'="ingredients")
+          .row(
+            '*ngFor'="let ingredientCtrl of recipeForm.get('ingredients').controls; let i = index"
+            '[formGroupName]'="i"
+            style="margin-top: 10px;"
+          )
+            .col-xs-8
+              input.form-control(
+                type="text"
+                'formControlName'="name"
+              )
+            .col-xs-2
+              input(
+                type="number"
+                class="form-control"
+                'formControlName'="amount"
+              )
+            .col-xs-2
+              button.btn.btn-danger(
+                type="button"
+                '(click)'="onDeleteIngredient(i)"
+              ) X
+          hr
+          .row
+            .col-xs-12
+              button.btn.btn-success(
+                type="button"
+                '(click)'="onAddIngredient()"
+              ) Add Ingredient

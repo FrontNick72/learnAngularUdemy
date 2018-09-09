@@ -1,0 +1,15 @@
+a.list-group-item.clearfix(
+  style="cursor: pointer;"
+  '[routerLink]'="[index]"
+  'routerLinkActive'="active"
+)
+  .pull-left
+    h4.list-group-item-heading {{ recipe.name }}
+    p.list-group-item-text {{ recipe.description }}
+  span.pull-right
+    img(
+      '[src]'="recipe.imagePath"
+      alt="{{ recipe.name }}"
+      class="img-responsive"
+      style="max-height: 50px;"
+    )

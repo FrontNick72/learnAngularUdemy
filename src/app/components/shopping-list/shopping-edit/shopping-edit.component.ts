@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-edit',
-  templateUrl: './shopping-edit.component.html',
+  templateUrl: './shopping-edit.component.pug',
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {

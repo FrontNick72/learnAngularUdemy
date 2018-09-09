@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 
 import { RecipeService } from '../recipe.service';
@@ -8,7 +8,7 @@ import { Recipes } from '../recipes.module';
 
 @Component({
   selector: 'app-recipe-book',
-  templateUrl: './recipe-book.component.html',
+  templateUrl: './recipe-book.component.pug',
   styleUrls: ['./recipe-book.component.css']
 })
 export class RecipeBookComponent implements OnInit, OnDestroy {

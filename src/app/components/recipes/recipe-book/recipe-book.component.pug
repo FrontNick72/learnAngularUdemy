@@ -1,0 +1,13 @@
+.row
+  .col-xs-12
+    button(class="btn btn-success" '(click)'="onNewRecipe()") New Recipe
+hr
+.row
+  .col-xs-12
+    div('*ngIf'="recipes.length !== 0; else empty")
+      app-recipe-item(
+        '*ngFor'="let recipeEl of recipes; let i = index"
+        '[recipe]'="recipeEl"
+        '[index]'="i"
+      )
+    ng-template('#empty') Add a new Recipe!
