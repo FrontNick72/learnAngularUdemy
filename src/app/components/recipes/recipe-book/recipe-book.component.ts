@@ -9,7 +9,7 @@ import { Recipes } from '../recipes.module';
 @Component({
   selector: 'app-recipe-book',
   templateUrl: './recipe-book.component.pug',
-  styleUrls: ['./recipe-book.component.css']
+  styleUrls: ['./recipe-book.component.styl']
 })
 export class RecipeBookComponent implements OnInit, OnDestroy {
   recipes: Recipes[];
