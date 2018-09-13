@@ -7,7 +7,7 @@ import { ShoppingListService } from './shopping-list.service';
 @Component({
   selector: 'app-shop-list',
   templateUrl: './shopping-list.component.pug',
-  styleUrls: ['./shopping-list.component.css']
+  styleUrls: ['./shopping-list.component.styl']
 })
 export class ShoppingListComponent implements OnInit, OnDestroy {
   ingredients: Ingredient[];
