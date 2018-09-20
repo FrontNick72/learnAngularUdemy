@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
-import { Http, Headers } from "@angular/http";
+import { Http, Headers, Response } from "@angular/http";
+import 'rxjs/Rx';
+import { Observable } from "rxjs";
 
 @Injectable()
 export class ServerService {
@@ -8,8 +10,36 @@ export class ServerService {
 
   storeService(servers: any[]) {
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('https://udemy-ng-http-13852.firebaseio.com/data.json',
+    // return this.http.post('https://udemy-ng-http-13852.firebaseio.com/data.json',
+    //   servers,
+    //   {headers: headers});
+    return this.http.put('https://udemy-ng-http-13852.firebaseio.com/data.json',
       servers,
-      {headers: headers});
+      { headers: headers });
+  }
+  getServers() {
+    return this.http.get('https://udemy-ng-http-13852.firebaseio.com/dat')
+      .map((response: Response) => {
+        const data = response.json();
+
+        for (const server of data) {
+          server.name = 'FETCHED_' + server.name;
+        }
+
+        return data;
+      })
+      .catch(
+        (error: Response) => {
+          console.log(error);
+          return Observable.throw('Something went wrong');
+        }
+      );
+  }
+
+  getAppName() {
+    return this.http.get('https://udemy-ng-http-13852.firebaseio.com/AppName.json')
+      .map((response: Response) => {
+        return response.json();
+      });
   }
 }
