@@ -22,8 +22,8 @@ header
             a('[routerLink]'="['/shopping-list']") Shopping list
         ul.nav.navbar-nav.navbar-right
           li
-            a('[routerLink]'="['/signup']") Register
-          li.dropdown('appDropdown')
+            a(style="cursor: pointer;" '(click)'="onLogout()" '*ngIf'="authService.isAuthenticated() != false") Logout
+          li.dropdown('appDropdown' '*ngIf'="authService.isAuthenticated() != false; else nonAuth")
             a.dropdown-toggle(style="cursor: pointer;" role="button") Manage
               span.caret
             ul.dropdown-menu
@@ -31,3 +31,8 @@ header
                 a(style="cursor: pointer;" '(click)'="onSaveData()") Save data
               li
                 a(style="cursor: pointer;" '(click)'="onFetchData()") Fetch data
+          ng-template('#nonAuth')
+            li
+              a('[routerLink]'="['/signup']") Register
+            li
+              a('[routerLink]'="['/signin']") Login
