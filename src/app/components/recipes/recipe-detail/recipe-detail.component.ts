@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { RecipeService } from '../recipe.service';
-import { Recipes } from '../recipes.module';
+import { Recipes } from '../recipes.model';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({

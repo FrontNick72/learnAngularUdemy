@@ -1,15 +1,21 @@
-import { Ingredient } from '../shared/ingredient.model';
+import { NgModule } from '@angular/core';
+import { RecipesComponent } from './recipes.component';
+import { RecipeStartComponent } from './recipe-start/recipe-start.component';
+import { RecipeBookComponent } from './recipe-book/recipe-book.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { RecipeItemComponent } from './recipe-book/recipe-item/recipe-item.component';
 
-export class Recipes {
-  public name: string;
-  public description: string;
-  public imagePath: string;
-  public ingredients: Ingredient[];
+@NgModule({
+  declarations: [
+    RecipesComponent,
+    RecipeStartComponent,
+    RecipeBookComponent,
+    RecipeEditComponent,
+    RecipeDetailComponent,
+    RecipeItemComponent
+  ]
+})
+export class RecipesModule {
 
-  constructor(name: string, desc: string, imagePath: string, ingredients: Ingredient[]) {
-    this.name = name;
-    this.description = desc;
-    this.imagePath = imagePath;
-    this.ingredients = ingredients;
-  }
 }

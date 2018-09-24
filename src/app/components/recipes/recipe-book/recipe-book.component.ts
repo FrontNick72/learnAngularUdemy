@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 
 
 import { RecipeService } from '../recipe.service';
-import { Recipes } from '../recipes.module';
+import { Recipes } from '../recipes.model';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
