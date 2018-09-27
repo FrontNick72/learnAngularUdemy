@@ -1,12 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ShoppingEditComponent } from './components/shopping-list/shopping-edit/shopping-edit.component';
-import { DropdownDirective } from './components/shared/dropdown.directive';
 import { ShoppingListService } from './components/shopping-list/shopping-list.service';
 import { HomeComponent } from './home-component/home.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,14 +15,14 @@ import { AuthService } from './components/auth/auth.service';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { AuthGuard } from './components/auth/auth-guard.service';
+import { RecipesModule } from './components/recipes/recipes.module';
+import { SharedModule } from './components/shared/shared.module';
+import { ShoppingListModule } from './components/shopping-list/shopping-list.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShoppingListComponent,
     HeaderComponent,
-    ShoppingEditComponent,
-    DropdownDirective,
     HomeComponent,
     SignupComponent,
     SigninComponent
@@ -33,8 +31,10 @@ import { AuthGuard } from './components/auth/auth-guard.service';
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule,
-    AppRoutingModule
+    RecipesModule,
+    SharedModule,
+    ShoppingListModule,
+    AppRoutingModule,
   ],
   providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
