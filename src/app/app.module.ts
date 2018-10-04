@@ -12,9 +12,7 @@ import { HttpModule } from '@angular/http';
 import { DataStorageService } from './components/shared/data-storage.service';
 import { AuthService } from './components/auth/auth.service';
 import { AuthGuard } from './components/auth/auth-guard.service';
-import { RecipesModule } from './components/recipes/recipes.module';
 import { SharedModule } from './components/shared/shared.module';
-import { ShoppingListModule } from './components/shopping-list/shopping-list.module';
 import { AuthModule } from './components/auth/auth.module';
 
 @NgModule({
@@ -26,9 +24,7 @@ import { AuthModule } from './components/auth/auth.module';
   imports: [
     BrowserModule,
     HttpModule,
-    RecipesModule,
     SharedModule,
-    ShoppingListModule,
     AuthModule,
     AppRoutingModule,
   ],
