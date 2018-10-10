@@ -1,38 +1,32 @@
 header
   nav.navbar.navbar-default
-   .container-fluid
+    .container-fluid
       .navbar-header
-        button.navbar-toggle.collapsed(
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbar"
-          aria-expanded="false"
-          aria-controls="navbar"
-        )
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-
         a.navbar-brand('[routerLink]'="['/']") Recipe book
-      div.collapse.navbar-collapse#navbar
+
+      .collapse.navbar-collapse
         ul.nav.navbar-nav
-          li('routerLinkActive'="active")
-            a('[routerLink]'="['/recipes']") Recipes
-          li('routerLinkActive'="active")
-            a('[routerLink]'="['/shopping-list']") Shopping list
+          li('routerLinkActive'='active')
+            a('routerLink'='/recipes') Recipes
+          li('routerLinkActive'='active')
+            a('routerLink'='/shopping-list') Shopping List
         ul.nav.navbar-nav.navbar-right
+          ng-template('[ngIf]'="!isAuthenticated()")
+            li
+              a('routerLink'="/signup") Register
+            li
+              a('routerLink'="/signin") Login
           li
-            a(style="cursor: pointer;" '(click)'="onLogout()" '*ngIf'="authService.isAuthenticated() != false") Logout
-          li.dropdown('appDropdown' '*ngIf'="authService.isAuthenticated() != false; else nonAuth")
+            a(
+              style="cursor: pointer;"
+              '(click)'="onLogout()"
+              '*ngIf'="isAuthenticated()") Logout
+
+          li.dropdown('appDropdown' '*ngIf'="isAuthenticated()")
             a.dropdown-toggle(style="cursor: pointer;" role="button") Manage
               span.caret
             ul.dropdown-menu
               li
-                a(style="cursor: pointer;" '(click)'="onSaveData()") Save data
+                a(style="cursor: pointer;" '(click)'="onSaveData()") Save Data
               li
-                a(style="cursor: pointer;" '(click)'="onFetchData()") Fetch data
-          ng-template('#nonAuth')
-            li
-              a('[routerLink]'="['/signup']") Register
-            li
-              a('[routerLink]'="['/signin']") Login
+                a(style="cursor: pointer;" '(click)'="onFetchData()") Fetch Data

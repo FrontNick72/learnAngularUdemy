@@ -1,30 +1,36 @@
 import { Component } from '@angular/core';
-import { DataStorageService } from '../../shared/data-storage.service';
 import { Response } from '@angular/http';
+
+import { DataStorageService } from '../../shared/data-storage.service';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.pug',
-  styleUrls: ['./header.component.styl']
+  templateUrl: './header.component.pug'
 })
 export class HeaderComponent {
-  constructor(private storageService: DataStorageService,
-              private authService: AuthService) {}
+  constructor(private dataStorageService: DataStorageService,
+    private authService: AuthService) {
+  }
 
   onSaveData() {
-    this.storageService.storeRecipes().subscribe(
-      (response: Response) => {
-        console.log(response);
-      }
-    );
+    this.dataStorageService.storeRecipes()
+      .subscribe(
+        (response: Response) => {
+          console.log(response);
+        }
+      );
   }
 
   onFetchData() {
-    this.storageService.getRecipes();
+    this.dataStorageService.getRecipes();
   }
 
   onLogout() {
     this.authService.logout();
+  }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
   }
 }
