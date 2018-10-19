@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ShoppingListService } from './components/shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpModule } from '@angular/http';
+
 import { SharedModule } from './components/shared/shared.module';
 import { AuthModule } from './components/auth/auth.module';
 import { CoreModule } from './components/core/core.module';
@@ -15,7 +15,7 @@ import { CoreModule } from './components/core/core.module';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     SharedModule,
     AuthModule,
     CoreModule,
