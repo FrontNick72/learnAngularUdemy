@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { ShoppingListService } from './components/shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 
 import { SharedModule } from './components/shared/shared.module';
