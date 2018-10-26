@@ -41,11 +41,11 @@ export class RecipeDetailComponent implements OnInit {
   }
 
   onEditRecipe() {
-    if (this.authService.isAuthenticated()) {
+    // if (this.authService.isAuthenticated()) {
       this.router.navigate(['edit'], { relativeTo: this.route });
-    } else {
-      this.router.navigate(['/signin']);
-    }
+    // } else {
+      // this.router.navigate(['/signin']);
+    // }
     // this.router.navigate(['../', this.id, 'edit'], {relativeTo: this.route});
   }
 
