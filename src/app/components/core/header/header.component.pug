@@ -11,7 +11,7 @@ header
           li('routerLinkActive'='active')
             a('routerLink'='/shopping-list') Shopping List
         ul.nav.navbar-nav.navbar-right
-          ng-template('[ngIf]'="!isAuthenticated()")
+          ng-template('[ngIf]'="!(authState | async).authenticated")
             li
               a('routerLink'="/signup") Register
             li
@@ -20,9 +20,9 @@ header
             a(
               style="cursor: pointer;"
               '(click)'="onLogout()"
-              '*ngIf'="isAuthenticated()") Logout
+              '*ngIf'="(authState | async).authenticated") Logout
 
-          li.dropdown('appDropdown' '*ngIf'="isAuthenticated()")
+          li.dropdown('appDropdown' '*ngIf'="(authState | async).authenticated")
             a.dropdown-toggle(style="cursor: pointer;" role="button") Manage
               span.caret
             ul.dropdown-menu
