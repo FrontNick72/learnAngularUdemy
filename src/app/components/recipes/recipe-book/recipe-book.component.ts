@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 
 import { RecipeService } from '../recipe.service';
 import { Recipes } from '../recipes.model';
-import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-recipe-book',
@@ -18,8 +17,7 @@ export class RecipeBookComponent implements OnInit, OnDestroy {
 
   constructor(private recipeService: RecipeService,
     private router: Router,
-    private route: ActivatedRoute,
-    private authService: AuthService) {
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {

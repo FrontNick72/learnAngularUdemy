@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, switchMap, mergeMap } from 'rxjs/operators';
+import { map, switchMap, mergeMap, tap} from 'rxjs/operators';
 import { from } from 'rxjs';
 import * as firebase from 'firebase';
 
@@ -53,6 +53,12 @@ export class AuthEffects {
           payload: token
         }
       ];
+    }));
+
+  @Effect({dispatch: false}) authLogout = this.actions$
+    .ofType(AuthActions.LOGOUT)
+    .pipe(tap(() => {
+      this.router.navigate(['/']);
     }));
 
   constructor(
